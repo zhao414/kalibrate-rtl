@@ -20,4 +20,9 @@ kal_SOURCES = \
    version.h
 
 kal_CXXFLAGS = $(FFTW3_CFLAGS) $(LIBRTLSDR_CFLAGS)
+if BUILD_OS_IS_DARWIN
+kal_LDADD = $(FFTW3_LIBS) $(LIBRTLSDR_LIBS)
+else
 kal_LDADD = $(FFTW3_LIBS) $(LIBRTLSDR_LIBS) -lrt
+endif
+

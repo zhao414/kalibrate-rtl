@@ -44,6 +44,12 @@ case "$host_cpu" in
 		;;
 esac
 
+AS_IF([test x${build_os#*darwin} = x${build_os}],
+    [AM_CONDITIONAL(BUILD_OS_IS_DARWIN,FALSE)
+    echo "current building system is under OSX"],
+    [AM_CONDITIONAL(BUILD_OS_IS_DARWIN,TRUE)
+    echo "current building system is under OSX"])
+
 AC_CONFIG_FILES([Makefile
                  src/Makefile])
 AC_OUTPUT
